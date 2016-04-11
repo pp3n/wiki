@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
 		@articles = Article.all.order("created_at DESC")
 	end
 	def create
-		@article = Article.new(article_params)
+		@article = current_user.articles.build(article_params)
 		if @article.save
 			redirect_to @article
 		else
@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
 	def show
 	end
 	def new
-		@article = Article.new
+		@article = current_user.articles.build
 	end
 
 	private
