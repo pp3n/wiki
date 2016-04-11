@@ -1,0 +1,10 @@
+%h1 List of All Articles
+
+- @articles.each do |article|
+	%h2= article.title
+	%p
+		Published on
+		= article.created_at.strftime('%b %d, %Y')
+	%p= truncate(article.content, length: 50)
+
+= link_to "New Article", new_article_path
